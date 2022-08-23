@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<body class="img js-fullheight" style="background-image: url({% static 'images/bg.jpg' %});">
+<div class="why">
+<!--		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="{% static 'images/bg.jpg' %}" data-speed="0.8"></div>-->
+		<div class="container">
+			<div class="row">
+				<div class="col text-center">
+					<div class="section_subtitle">State Bank of Kerala</div>
+					<div class="section_title"><h2>Banking for All</h2></div>
+				</div>
+			</div>
+			<div class="row why_row">
+
+
+<div class="container">
+    <div class="row mx-auto" style="align-items: stretch;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;" >
+        {% for i in branches %}
+        <div class="col-md-3">
+            <div class="card" style="margin-bottom:25px;flex-basis: 33.333%; flex-grow: 0;flex-shrink: 0; ">
+                 <img class="card-img-top" src="{{i.img.url}}" alt="refresh" width="270" height="300">
+                <div class="card-body">
+                    <h5 class="card-title">{{i.name}}</h5>
+                    <p class="card-text" style="height:57px; overflow:hidden;">{{i.desc}}</p>
+                    <a href="{% url 'Bankapp:detail' i.id %}" class="btn btn-primary">Read more</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+</body>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/popper.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+{% endblock %}
+
+

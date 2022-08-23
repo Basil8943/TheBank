@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-3">
+					<h2 class="heading-section" style="color:darkgreen;font-family: 'Rubik Dirt', 'Cursive';">Employee Form</h2>
+				</div>
+			</div>
+            <div class="row justify-content-center">
+				<div class="col-md-6 col-lg-4">
+					<div class="login-wrap p-0">
+                    <form method="POST" id="appForm" enctype="multipart/form-data" data-branches-url="{% url 'applications:ajax_load_branches' %}">
+                    {% csrf_token %}
+                    <div class="container">
+                        <div class="row">
+                            <div class="form-group">
+                        {{ form.as_p }}
+                            </div>
+                            <div class="form-group" style="text-align:center;">
+                    <button type="submit"class="btn btn-success" value="Submit">Submit</button>
+                            <a href="/" type="submit"  class="btn btn-info" >Home</a>
+                            </div>
+            </form>
+                    </div>
+
+            <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+            <script>
+                $("#id_district").change(function () {
+                    const url = $("#appForm").attr("data-branches-url");  // get the url of the `load_cities` view
+                    const districtId = $(this).val();  // get the selected country ID from the HTML input
+
+                    $.ajax({                       // initialize an AJAX request
+                        url: url,                    // set the url of the request (= /persons/ajax/load-cities/ )
+                        data: {
+                            'district_id': districtId       // add the country id to the GET parameters
+                        },
+                        success: function (data) {   // `data` is the return of the `load_cities` view function
+                            $("#id_branch").html(data);  // replace the contents of the city input with the data that came from the server
+                            /*
+
+                            let html_data = '<option value="">---------</option>';
+                            data.forEach(function (branch) {
+                                html_data += `<option value="${branch.id}">${branch.name}</option>`
+                            });
+                            console.log(html_data);
+                            $("#id_branch").html(html_data);
+
+                            */
+                        }
+                    });
+
+                });
+            </script>
+                </div>
+<!--<script>-->
+<!--$(document).ready( function () {-->
+
+<!--   $("input[name='m_name']").each( function () {-->
+<!--       alert( $(this).val() );-->
+<!--   });-->
+
+<!--});-->
+<!--</script>-->
+{% endblock %}

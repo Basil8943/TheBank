@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-3">
+					<h2 class="heading-section" style="color:red;background-color:green;font-family: 'Rubik Dirt', 'Cursive';">{{ br.name }}  Blog</h2>
+				</div>
+			</div>
+    <div class="row">
+
+        <div class="col-md-6">
+        <img  src="{{ br.img.url }}" width="400" height ="500"><br>
+        </div>
+        <div class="col-md-4">
+            <h1>{{ br.name }}</h1><br>
+            <h1>{{ br.district }}</h1><br>
+            <a class="btn btn-success" href="{% url 'Bankapp:home' %}">HOME</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+<!--<li class="nav-item dropdown">-->
+<!--          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="true">-->
+<!--            BRANCHES-->
+<!--        </a>-->
+<!--          {% for i in branches %}-->
+<!--        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+
+<!--          <li><a class="dropdown-item" href="{% url 'Bankapp:kalpeta' %}">KALPETTA</a></li>-->
+<!--          <li><a class="dropdown-item" href="{% url 'Bankapp:mananthvady' %}">MANANTHAVADY</a></li>-->
+<!--          <li><a class="dropdown-item" href="{% url 'Bankapp:bathery' %}">BATHERY</a></li>-->
+<!--          <li><hr class="dropdown-divider"></li>-->
+<!--          <li><a class="dropdown-item" href="{% url 'Bankapp:koduvally' %}">KODUVALLY</a></li>-->
+<!--          <li><a class="dropdown-item" href="{% url 'Bankapp:tmsry' %}">THAMARASSERY</a></li>-->
+<!--          <li><a class="dropdown-item" href="{% url 'Bankapp:medc' %}">MED.COLLEGE</a></li>-->
+<!--          <li><hr class="dropdown-divider"></li>-->
+<!--          <li><a class="dropdown-item" href="{% url 'Bankapp:kaloor' %}">KALOOR</a></li>-->
+<!--          <li><a class="dropdown-item" href="{% url 'Bankapp:aluva' %}">ALUVA</a></li>-->
+<!--          <li><a class="dropdown-item" href="{% url 'Bankapp:kakkanad' %}">KAKKANAD</a></li>-->
+<!--        </ul>-->
+<!--          {% endfor %}-->
+<!--      </li>-->
+<!--&lt;!&ndash;-->
